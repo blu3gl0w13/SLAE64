@@ -1,0 +1,5 @@
+http://shell-storm.org/shellcode/files/shellcode-76.php - 33 bytes
+
+http://shell-storm.org/shellcode/files/shellcode-77.php - 49 bytes
+
+http://shell-storm.org/shellcode/files/shellcode-801.php - 189 bytes
