@@ -1,64 +1,66 @@
-# SLAE64
+# SLAE32
+This repository has been created for completing the requirements of the 
+Security Tube Linux Assembly Expert Certification 32-bit.
 
-These scripts have been created for completing the requirements of the SecurityTube Linux Assembly Expert 64-bit certification:
+http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/
 
-http://www.securitytube-training.com/online-courses/x8664-assembly-and-shellcoding-on-linux/index.html
-
-Student ID: SLAE64 - 1439
+Student ID: SLAE-744
 
 
-## Assignment 1
 
-Create a Shell_Bind_TCP shellcode
-  - Binds to a port
-  - needs a "Passcode"
-  - If Passcode is correct then Execs Shell
+## Assignment 1 details:
 
-Remove 0x00 from the Bind TCP Shellcode discussed
+Write a TCP bind shell (configurable PORT)
 
-## Assignment 2
+## Assignment 2 details:
 
-Create a Shell_Reverse_TCP Shellcode
-  - Reverse connects to configured IP and Port
-  - needs a "Passcode"
-  - If Passcode is correct then Execs Shell
+Write a Reverse TCP shell (configurable IP and PORT)
 
-Remove 0x00 from the Reverse TCP Shellcode discussed
+## Assignment 3 details
 
-## Assignment 3
+Study Egg Hunter shellcode
 
-Study about the Egg Hunter shellcode
-
-Create a working demo of the Egghunter
+Create working demo of Egg Hunter
 
 Should be configurable for different payloads
 
-## Assignment 4
+## Assignment 4 details
 
-Create a Custom encoding scheme like the "Insertion Encoder" we showed you
+Create a custom encoding scheme
+like the "Insertion Encoder"
 
-PoC with using execve-stack as the shellcode to encode with your schema and execute
+PoC with using execve-stack as the shellcode
+to encode with your schema and execute
 
-## Assignment 5
+## Assignment 5 details
 
-Take up at least 3 shellcode samples created using MSFPayload for linux/x86_64
+Take up at least 3 shellcode samples
+created using MSFpayload (MSFVenom)
+for Linux/x86
 
-Use GDB to dissect the functionality of shellcode
+Use GDB/NDISASM, Libemu to dissect
+the functionality of the shellcode
 
-Document your analysis
+present your analysis
 
-## Assignment 6
+## Assignment 6 details
 
-Take up 3 shellcodes from shell-storm and create polymorphic versions of them to beat pattern matching
+Take up 3 shellcodes from Shell-storm and
+create polymorphic versions of them to beat
+pattern matching
 
-The polymorphic versions cannot be larger 150% of the existing shellcode
+The polymorphic versions cannot be larger than
+150% of the existing shellcode
 
-Bonus points for making it shorter in length than original
+Bonus points for making it shorter in length than
+original
 
-## Assignment 7
+## Assignment 7 details
 
-Create a custom crypter like the one shown in the "crypters" video
+Create a custom crypter like the one
+shown in the "crypters" video
 
-Free to use any existing encryption schema
+Free to use any existing encryption
+scheme
 
 Can use any programming language
