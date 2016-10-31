@@ -41,7 +41,7 @@ incrementer:
 hunter:
 	lea rdi, [rdx + 8]		; put the address of edx plus 8 bytes into ebx for the syscall
 	xor rax, rax			; clear out eax
-	mov al, 0x56			; #define __NR_uselib       86 (0x56)	
+	mov al, 0x56			; #define __NR_link       86 (0x56)	
 	syscall				; call it
 	cmp al, 0xf2			; compare the return value in eax
 	jz page_alignment		; short jump to next page if ZF set
