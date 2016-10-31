@@ -1,3 +1,9 @@
+;------------------------------------
+; RevShell.nasm
+; by Vivek Ramachandran
+; SecurityTube
+;------------------------------------
+
 global _start
 
 
