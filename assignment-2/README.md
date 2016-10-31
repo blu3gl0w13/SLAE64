@@ -49,7 +49,7 @@ Document your analysis
 
 ## Assignment 6
 
-Take up 3 shellcodes form shell-storm and create polymorphic versions of them to beat pattern matching
+Take up 3 shellcodes from shell-storm and create polymorphic versions of them to beat pattern matching
 
 The polymorphic versions cannot be larger 150% of the existing shellcode
 
