@@ -42,6 +42,7 @@ hunter:
 	lea rdi, [rdx + 8]		; put the address of rdx plus 8 bytes into rbx for the syscall
 	xor rax, rax			; clear out rax
 	mov al, 0x56			; #define __NR_link       86 (0x56)	
+	xor rsi, rsi
 	syscall				; call it
 	cmp al, 0xf2			; compare the return value in eax
 	jz page_alignment		; short jump to next page if ZF set
