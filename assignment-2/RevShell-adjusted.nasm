@@ -1,3 +1,13 @@
+;--------------------------------
+; RevShell-adjusted.nasm
+; by Michael Born (@blu3gl0w13)
+; Student ID: SLAE64-1439
+; November 8, 2016
+; Original code by:
+; Vivek Ramachandran
+; SecurityTube
+;-------------------------------
+
 global _start
 
 
