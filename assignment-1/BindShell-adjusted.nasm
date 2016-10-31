@@ -3,7 +3,7 @@
 ; by Michael Born (@blu3gl0w13)
 ; Student ID: SLAE64-1439
 ; November 7, 2016
-; Original version by: Vivek Ramachandren
+; Original version by: Vivek Ramachandran
 ; SecurityTube Linux Assembly Expert 64
 ;-------------------------------------------------
 
