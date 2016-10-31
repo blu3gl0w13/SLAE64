@@ -18,11 +18,11 @@ _start:
 	; syscall number 41 
 
 	xor rax, rax
-	mov rax, 41
+	mov al, 41
 	xor rdi, rdi
-	mov rdi, 2
+	mov dil, 2
 	xor rsi, rsi
-	mov rsi, 1
+	mov sil, 1
 	xor rdx, rdx
 	syscall
 

